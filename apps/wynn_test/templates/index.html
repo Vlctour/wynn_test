@@ -1,0 +1,58 @@
+[[extend 'layout.html']]
+
+<style>
+[v-cloak] {
+    display: none;
+}
+</style>
+
+
+<div class="section" id="app" v-cloak>
+    <!-- Put here your Vue.js template -->
+    <h1 class="title"><i class="fa-solid fa-cube"></i> Title</h1>
+    <p>Content: my_value: {{my_value}} </p>
+    <button class="button is-success" @click="my_test">test2</button>
+
+    <div class="container pl-6 pr-6">
+        <div class="columns is-multiline">
+            <div v-for="item in players" class="column is-one-quarter">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img
+                                    src="https://bulma.io/assets/images/placeholders/96x96.png"
+                                    alt="Placeholder image"
+                                    />
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">(Rank) {{item.username}}</p>
+                                <p class="subtitle is-6">(Online Status) {{item.hours}} hrs</p>
+                            </div>
+                        </div>
+                        <div class="media-content">
+                            Top 3 Class Combat Levels: ()
+                            Highest Total Character level: ()
+                            Guild XP Contribution: ()
+                            Total Raids Completed: {{item.raids}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+[[block page_scripts]]
+<!-- Loads the index-specific js for Vue -->
+<script>
+    let my_callback_url = "[[=XML(my_callback_url)]]";
+    let wynn_call_url = "[[=XML(wynn_call_url)]]";
+    let get_head_url = "[[=XML(get_head_url)]]";
+</script>
+<script src="js/index.js"></script>
+[[end]]
